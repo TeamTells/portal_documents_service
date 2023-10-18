@@ -1,0 +1,40 @@
+# © CC 4.0 BY-SA
+openapi: 3.1.0
+info:
+  title: Documents Request API
+  version: 1.0.0
+  description: |-
+    This is a Microservice for documents
+    - [Portal Document Repository](https://github.com/pblaravel/portal_documents_service)
+paths:
+  "/sections":
+    get:
+      summary: Get all sections
+      operationId: getSections
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sections'
+        # we'd also add other response options here too
+components:
+  schemas:
+    Sections:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        name:
+          type: string
+          example: Name of Sections
+        slug:
+          $ref: '#/components/schemas/SectionSlug'
+        favorite:
+          type: boolean
+          example: true
+    SectionSlug:
+      type: string
+      example: name-of-sections
